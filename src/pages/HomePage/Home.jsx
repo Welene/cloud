@@ -11,7 +11,9 @@ function Home() {
 
 	return (
 		// This is where I wrap all the shit into one context and sends it away to NewPostPage
-		<ForumWrapper posts={posts} addPost={setPosts} className="home" />
+		<>
+			<ForumWrapper posts={posts} addPost={setPosts} className="home" />
+		</>
 	);
 }
 

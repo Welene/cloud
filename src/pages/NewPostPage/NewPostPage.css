@@ -7,6 +7,58 @@
 	height: 100vh;
 }
 
+.post-section__content {
+	background-color: rgb(104, 104, 104);
+	min-width: 22rem;
+	min-height: 33rem;
+	margin: 1.8rem 0rem 1.8rem 0rem;
+	border-radius: 0.3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.post-section__title {
+	margin-bottom: 5.1rem;
+}
+
+.post-section__input {
+	background-color: rgb(240, 240, 240);
+	border-style: none;
+	font-size: 1.2rem;
+	margin-bottom: 3rem;
+	padding: 0.5rem 0.8rem;
+	width: 19rem;
+	border-radius: 0.3rem;
+	color: rgb(7, 7, 7);
+}
+
+.post-section__txt-area {
+	background-color: rgb(240, 240, 240);
+	border-style: none;
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	padding: 1rem 0.7rem;
+	width: 19rem;
+	border-radius: 0.3rem;
+	color: rgb(7, 7, 7);
+	text-align: center;
+	min-height: 13rem;
+}
+
+.post-section__label--title {
+	position: absolute;
+	left: 0.7rem;
+	top: 6.5rem;
+}
+
+.post-section__label--content {
+	position: absolute;
+	left: 0.7rem;
+	top: 11.8rem;
+}
+
 .big-button {
 	padding: 1rem;
 	width: 15rem;

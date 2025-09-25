@@ -4,6 +4,7 @@ import UserPosts from '../pages/UserPostsPage/UserPosts';
 import NewPostPage from '../pages/NewPostPage/NewPostPage';
 import Login from '../pages/LoginPage/Login';
 import Register from '../pages/RegisterPage/Register';
+// import Logout from '../pages/LogoutPage/Logout;'
 
 const Router = ({ posts, addPost }) => {
 	// posts (old) & addPosts (new) props have to PASS THROUGH router to jump down to Home (all the way from NewPostPage)!
@@ -13,6 +14,7 @@ const Router = ({ posts, addPost }) => {
 		{ path: '/login', element: <Login /> },
 		{ path: '/register', element: <Register /> },
 		{ path: '/newpost', element: <NewPostPage /> },
+		// {path: '/logout', element: <Logout/>},
 	]);
 
 	return <RouterProvider router={router} />;

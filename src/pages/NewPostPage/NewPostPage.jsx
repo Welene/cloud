@@ -37,30 +37,32 @@ function NewPostPage() {
 	return (
 		<section className="post-section">
 			<article className="post-section__content">
-				<h2>Create a New Post</h2>
+				<h2 className="post-section__title">CREATE A POST</h2>
 
-				<label>
+				<label className="post-section__label--title" htmlFor="title">
 					Title:
-					<input
-						type="text"
-						value={title}
-						onChange={(e) => setTitle(e.target.value)}
-						placeholder="Give me a title!"
-					/>
 				</label>
+				<input
+					className="post-section__input"
+					type="text"
+					value={title}
+					onChange={(e) => setTitle(e.target.value)}
+				/>
 
-				<label>
+				<label
+					className="post-section__label--content"
+					htmlFor="content">
 					Content:
-					<textarea
-						value={content}
-						onChange={(e) => setContent(e.target.value)}
-						placeholder="and write something here..."
-					/>
 				</label>
+				<textarea
+					className="post-section__txt-area"
+					value={content}
+					onChange={(e) => setContent(e.target.value)}
+					placeholder="Share something with the world!"
+				/>
 			</article>
 
-			{/* Submit button triggers handlePost */}
-			<BigButton text="Submit Post" onClick={handlePost} />
+			<BigButton text="POST" onClick={handlePost} />
 			{/* clicking button activates the handlePost function up there ^ */}
 		</section>
 	);

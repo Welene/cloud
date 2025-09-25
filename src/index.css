@@ -41,6 +41,10 @@ main {
 	font-size: 3em;
 	line-height: 1.2;
 	margin: 0;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+		'Lucida Sans', Arial, sans-serif;
+	letter-spacing: 0.3rem;
+	font-weight: bolder;
 }
 
 .app-footer {

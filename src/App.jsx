@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Router from './router/Router';
 import { PostsContext } from './context/PostsContext';
+import NewPostBtn from './components/NewPostButton/NewPostBtn';
 
 function App() {
 	// This state now lives in App so both Home and NewPostPage can access it
@@ -42,7 +43,7 @@ function App() {
 		<PostsContext.Provider value={{ posts, addPost: setPosts }}>
 			<div className="app">
 				<header className="app-header">
-					<h1 className="app-header__title">My Forum</h1>
+					<h1 className="app-header__title">QuickPost</h1>
 				</header>
 
 				<main className="app-main">
@@ -52,6 +53,7 @@ function App() {
 				<footer className="app-footer">
 					<p className="app-footer__text">© 2025 Helene Theodorsen</p>
 				</footer>
+				<NewPostBtn />
 			</div>
 		</PostsContext.Provider>
 	);
