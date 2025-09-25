@@ -1,8 +1,16 @@
-.ForumWrapper {
+.forum-wrapper {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	/* justify-content: center; */
 	flex: 1; /* fills the rest of the available space on the page */
-	padding: 1rem;
 	overflow-y: auto; /* scroll if page is taller than the wrapper itself is */
-	background-color: #4167af;
+	/* background-color: pink; */
 }
+
+/* .forum-wrapper-home {
+	background-color: rgb(216, 44, 73);
+}
+
+.forum-wrapper-user {
+	background-color: rgb(163, 77, 91);
+} */

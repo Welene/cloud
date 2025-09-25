@@ -4,7 +4,7 @@
 	font-weight: 400;
 	color-scheme: light dark;
 	color: #fff;
-	background-color: #242424;
+	/* background-color: #242424; */
 }
 
 body {
@@ -29,7 +29,7 @@ main {
 }
 
 .app-header {
-	background-color: rgb(60, 43, 105);
+	background-color: rgb(68, 68, 68);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -45,7 +45,7 @@ main {
 
 .app-footer {
 	min-height: 3.5rem;
-	background-color: rgb(60, 43, 105);
+	background-color: rgb(68, 68, 68);
 	display: flex;
 	justify-content: center;
 	align-items: center;
