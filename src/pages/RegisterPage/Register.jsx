@@ -29,38 +29,44 @@ function Register() {
 
 	return (
 		<section className="register-section">
-			<article className="register-content">
-				<h2>Register</h2>
+			<article className="register-section__content">
+				<h2 className="register-section__title">REGISTER</h2>
 
-				<label>
+				<label
+					className="register-section__label--name"
+					htmlFor="username">
 					Username:
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						placeholder="Username"
-					/>
 				</label>
+				<input
+					className="register-section__input"
+					type="text"
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
+				/>
 
-				<label>
+				<label
+					className="register-section__label--pass1"
+					htmlFor="password">
 					Password:
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						placeholder="Password"
-					/>
 				</label>
+				<input
+					className="register-section__input"
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
 
-				<label>
-					Confirm Password:
-					<input
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						placeholder="Confirm Password"
-					/>
+				<label
+					className="register-section__label--pass2"
+					htmlFor="password">
+					Confirm password:
 				</label>
+				<input
+					className="register-section__input"
+					type="password"
+					value={confirmPassword}
+					onChange={(e) => setConfirmPassword(e.target.value)}
+				/>
 			</article>
 
 			<BigButton text="Register" onClick={handleRegister} />

@@ -1,0 +1,46 @@
+.login-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-section__content {
+	min-width: 22rem;
+	min-height: 25rem;
+	margin: 1.8rem 0rem 1.8rem 0rem;
+	border-radius: 0.3rem;
+	background-color: rgba(124, 124, 124, 0.6);
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	align-items: center;
+	position: relative;
+}
+
+.login-section__title {
+	margin-bottom: 5rem;
+}
+
+.login-section__input {
+	background-color: rgb(240, 240, 240);
+	border-style: none;
+	font-size: 1.2rem;
+	margin-bottom: 4rem;
+	padding: 0.5rem 0.8rem;
+	width: 19rem;
+	border-radius: 0.3rem;
+	color: rgb(7, 7, 7);
+}
+
+.login-section__label--name {
+	position: absolute;
+	left: 0.7rem;
+	top: 6.5rem;
+}
+
+.login-section__label-pass {
+	position: absolute;
+	left: 0.7rem;
+	top: 12.9rem;
+}

@@ -13,7 +13,7 @@ export const ForumPost = ({ username, title, content }) => {
 
 	return (
 		<article className="post">
-			<h2 className="post__title">{title}</h2>
+			<h3 className="post__title">{title}</h3>
 			<p className="post__txt">{content}</p>
 			<p className="post__user" onClick={handleUsernameClick}>
 				{username}

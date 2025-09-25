@@ -11,7 +11,7 @@ function Login() {
 
 	const handleLogin = () => {
 		if (!username || !password) {
-			alert('Please fill in all fields!');
+			alert('Please fill in all fields!'); // vi vil ikke ha alert, bytt ut senere
 			return;
 		}
 
@@ -23,31 +23,35 @@ function Login() {
 
 	return (
 		<section className="login-section">
-			<article className="login-content">
-				<h2>Login</h2>
+			<article className="login-section__content">
+				<h2 className="login-section__title">LOG IN</h2>
 
-				<label>
+				<label
+					className="login-section__label--name"
+					htmlFor="username">
 					Username:
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						placeholder="Username"
-					/>
 				</label>
+				<input
+					className="login-section__input"
+					id="username"
+					type="text"
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
+				/>
 
-				<label>
+				<label className="login-section__label-pass" htmlFor="password">
 					Password:
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						placeholder="Password"
-					/>
 				</label>
+				<input
+					className="login-section__input"
+					id="password"
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
 			</article>
 
-			<BigButton text="Login" onClick={handleLogin} />
+			<BigButton text="LOG IN" onClick={handleLogin} />
 		</section>
 	);
 }
