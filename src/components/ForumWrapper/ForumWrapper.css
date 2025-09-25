@@ -1,0 +1,8 @@
+.ForumWrapper {
+	display: flex;
+	justify-content: center;
+	flex: 1; /* fills the rest of the available space on the page */
+	padding: 1rem;
+	overflow-y: auto; /* scroll if page is taller than the wrapper itself is */
+	background-color: #4167af;
+}
