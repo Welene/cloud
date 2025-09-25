@@ -39,9 +39,20 @@ function App() {
 	]);
 
 	return (
-		// Now Router and all its pages can access posts/addPost
 		<PostsContext.Provider value={{ posts, addPost: setPosts }}>
-			<Router />
+			<div className="app">
+				<header className="app-header">
+					<h1 className="app-header__title">My Forum</h1>
+				</header>
+
+				<main className="app-main">
+					<Router />
+				</main>
+
+				<footer className="app-footer">
+					<p className="app-footer__text">© 2025 Helene Theodorsen</p>
+				</footer>
+			</div>
 		</PostsContext.Provider>
 	);
 }
