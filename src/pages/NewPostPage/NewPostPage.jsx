@@ -2,18 +2,29 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BigButton from '../../components/BigButton';
 import { PostsContext } from '../../context/PostsContext';
+import './NewPostPage.css';
+import { useState } from 'react';
 
 function NewPostPage() {
 	const navigate = useNavigate();
 	const { addPost } = useContext(PostsContext); // this is where context has sent the WHOLE setPosts package to this page!
 
+	// states only in this file for the form the user is gonna fill out in the article, to create a new post.
+	const [title, setTitle] = useState('');
+	const [content, setContent] = useState('');
+
 	// when i fix my backend -- save the post in backend and return that to the homepage so that the newest post will be shown there!
 	// now we navigate --> together with the backend logic, it will be there after we change page to homepage!
 	const handlePost = () => {
+		if (!title || !content) {
+			alert('All the fields needs to me filled out!');
+			return;
+		}
+
 		const newPost = {
-			username: 'CurrentUser',
-			title: 'My New Post',
-			content: 'This is a new post!',
+			username: 'CurrentUser', // LOOOOOOOOOOOOOOOOOOOKK ------> --> --> REPLACE THIS WHEN I HAVE FIXED LOGIN/AUTH ETC... <-- <-- <--
+			title,
+			content,
 		};
 
 		addPost((prev) => [newPost, ...prev]); //addPost is the same as setPost on HomePage (addPosts is just a prop name to send it here BUT it IS still setPosts from HomePage)
@@ -24,10 +35,34 @@ function NewPostPage() {
 	};
 
 	return (
-		<div>
+		<section className="post-section">
+			<article className="post-section__content">
+				<h2>Create a New Post</h2>
+
+				<label>
+					Title:
+					<input
+						type="text"
+						value={title}
+						onChange={(e) => setTitle(e.target.value)}
+						placeholder="Give me a title!"
+					/>
+				</label>
+
+				<label>
+					Content:
+					<textarea
+						value={content}
+						onChange={(e) => setContent(e.target.value)}
+						placeholder="and write something here..."
+					/>
+				</label>
+			</article>
+
+			{/* Submit button triggers handlePost */}
 			<BigButton text="Submit Post" onClick={handlePost} />
 			{/* clicking button activates the handlePost function up there ^ */}
-		</div>
+		</section>
 	);
 }
 
