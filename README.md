@@ -1,16 +1,53 @@
-# React + Vite
+# Individuell examination - Shui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instruktioner
+Du ska bygga en enkel anslagstavla där det går att posta meddelanden. Det ska gå att se alla meddelanden samt posta ett nytt meddelande där man anger ett användarnamn. Se längre ner vad ett meddelande ska innehålla.
+Du ska bygga både en frontend i React (annat ramverk är godkänt med) och ett serverless API i AWS. Din frontend ska vara "hostad" i en S3 - bucket på AWS och du ska använda dig av ditt API i dina API-anrop.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funktionella krav
 
-## React Compiler
+**Krav:**
+* Det går att posta ett nytt meddelande.
+* Det går att ändra ett valfritt meddelande.
+* Det går att ta bort ett valfritt meddelande.
+* Det går att se alla meddelanden.
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tekniska krav
 
-## Expanding the ESLint configuration
+**Frontend**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Byggt med ett ramverk (förslagvis React)
+* Deployad på AWS i en S3 bucket och nåbar via URL.
+
+**Backend**
+
+* Serverless framework
+* API Gateway
+* Lambda
+* DynamoDB
+
+**Meddelande**
+
+Ett meddelande har följande egenskaper: `id`, `username`, `text`, `createdAt`.
+
+## Figmaskiss
+
+Er inlämning behöver inte se ut exakt som skissen nedan ut kan användas mer som en referens på hur det ska fungera.
+
+https://www.figma.com/file/QKiz47a00tMsrPBIHsznR6/Shui---React?type=design&node-id=0-1&t=QBELxGIdjEESvy3Q-0
+
+## Betygskriterier
+
+**För Godkänt:**
+* Uppfyller alla funktionella och tekniska krav
+* Gränssnittet MÅSTE vara enhetligt, och följa en tydlig layout
+
+**För Väl Godkänt:**
+* Det går att sortera alla meddelanden på datum
+* Det går att hämta alla meddelanden en specifik användare. (Tex om jag klickar på *jeppan6y* så kommer jag till en sida där jag ser alla hens meddelanden)
+* Lägg till inloggning/registrering där det endast går att redigera/ta bort sina egna meddelanden som inloggad användare.
+
+## Inlämning
+
+Inlämning sker på Azomo med en länk till ditt Github repo med din kod senast 3/10 23:59. Glöm inte att lägga in länken till din applikation i ditt Githubrepo.
