@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BigButton from '../../components/BigButton';
 import './Login.css';
+import { loginUser } from '../../functions/loginUser';
 
 function Login() {
 	const navigate = useNavigate();
@@ -9,16 +10,17 @@ function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
-	const handleLogin = () => {
-		if (!username || !password) {
-			alert('Please fill in all fields!'); // vi vil ikke ha alert, bytt ut senere
-			return;
+	const handleLoginClick = async () => {
+		if (!username || !password) return;
+
+		try {
+			const result = await loginUser(username, password); // waiting on loginUser function, on the body of the POST call
+			console.log('Logged in:', result);
+			navigate('/'); // goes to homepage
+		} catch (error) {
+			console.error(error.response?.data || error.message);
+			alert(error.response?.data?.message || 'Login failed'); // bytt ut alerts med noe bedre senere, få det bare å funke først grovt sett...
 		}
-
-		// placeholder logic - replace with backend auth later
-		console.log('Logging in:', { username, password });
-
-		navigate('/'); // after login, go to homepage
 	};
 
 	return (
@@ -51,7 +53,7 @@ function Login() {
 				/>
 			</article>
 
-			<BigButton text="LOG IN" onClick={handleLogin} />
+			<BigButton text="LOG IN" onClick={handleLoginClick} />
 		</section>
 	);
 }
