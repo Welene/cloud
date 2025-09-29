@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BigButton from '../../components/BigButton';
 import './Register.css';
+import { errorHandler } from '../../middlewares/errorHandler';
+import { registerUser } from '../../functions/registerUser';
 
 function Register() {
 	const navigate = useNavigate();
@@ -10,21 +12,18 @@ function Register() {
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 
-	const handleRegister = () => {
-		if (!username || !password || !confirmPassword) {
-			alert('Please fill in all fields!');
-			return;
+	const handleRegister = async () => {
+		if (!username || !password || !confirmPassword) return;
+		if (password !== confirmPassword) return;
+
+		try {
+			const result = await registerUser(username, password);
+			console.log(result); // backend answer
+			navigate('/login'); // <-- if the login succeeds
+		} catch (err) {
+			const response = errorHandler(err);
+			console.error(response); // logging out backend answer
 		}
-
-		if (password !== confirmPassword) {
-			alert('Passwords do not match!');
-			return;
-		}
-
-		// placeholder logic - replace with backend registration later
-		console.log('Registering:', { username, password });
-
-		navigate('/login'); // after registration, go to login page
 	};
 
 	return (
