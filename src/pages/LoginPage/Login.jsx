@@ -15,6 +15,7 @@ function Login() {
 
 		try {
 			const result = await loginUser(username, password); // waiting on loginUser function, on the body of the POST call
+			localStorage.setItem('token', result.token); // stores token for later API calls, like for example: NewPost
 			console.log('Logged in:', result);
 			navigate('/'); // goes to homepage
 		} catch (error) {

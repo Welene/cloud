@@ -1,46 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ForumWrapper } from '../../components/ForumWrapper/ForumWrapper';
+import axios from 'axios';
 import './UserPosts.css';
 
-function UserPosts() {
-	const { username } = useParams();
-	// henter parameteret username
-	// endre dette til ID senere når jeg lager EKTE API -- dette er mockup stadie!
+const API_URL = import.meta.env.VITE_API_URL;
 
-	const posts = [
-		{
-			// viser posts bare fra det {username} du klikte på
-			username,
-			title: 'hejhej',
-			content: 'This is my first post!',
-		},
-		{
-			username,
-			title: 'I am  this',
-			content: 'Lovifar woo',
-		},
-		{
-			username,
-			title: 'Hallo hallo',
-			content: 'This is  post!',
-		},
-		{
-			username,
-			title: 'I am  this',
-			content: 'Lovingo far woo',
-		},
-		{
-			username,
-			title: 'Hallo hallo',
-			content: 'This is my first post!',
-		},
-		{
-			username,
-			title: 'I am  this',
-			content: 'LAST POST',
-		},
-	];
+function UserPosts() {
+	const { userId } = useParams();
+	const [posts, setPosts] = useState([]);
+
+	useEffect(() => {
+		if (!userId) return;
+
+		axios
+			.get(`${API_URL}/posts/${userId}`)
+			.then((res) => {
+				const data = JSON.parse(res.data.body);
+				setPosts(data.posts || []);
+			})
+			.catch((err) => {
+				console.error('Failed to load posts:', err);
+			});
+	}, [userId]);
 
 	return <ForumWrapper posts={posts} className="user" />;
 }
