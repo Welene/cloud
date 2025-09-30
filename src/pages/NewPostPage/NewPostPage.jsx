@@ -4,34 +4,55 @@ import BigButton from '../../components/BigButton';
 import { PostsContext } from '../../context/PostsContext';
 import './NewPostPage.css';
 import { useState } from 'react';
+import { createNewPost } from '../../functions/newPost';
 
 function NewPostPage() {
 	const navigate = useNavigate();
 	const { addPost } = useContext(PostsContext); // this is where context has sent the WHOLE setPosts package to this page!
 
-	// states only in this file for the form the user is gonna fill out in the article, to create a new post.
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 
-	// when i fix my backend -- save the post in backend and return that to the homepage so that the newest post will be shown there!
-	// now we navigate --> together with the backend logic, it will be there after we change page to homepage!
-	const handlePost = () => {
+	const handlePost = async () => {
 		if (!title || !content) {
 			alert('All the fields needs to me filled out!');
 			return;
 		}
 
-		const newPost = {
-			username: 'CurrentUser', // LOOOOOOOOOOOOOOOOOOOKK ------> --> --> REPLACE THIS WHEN I HAVE FIXED LOGIN/AUTH ETC... <-- <-- <--
-			title,
-			content,
-		};
+		try {
+			const result = await createNewPost(title, content);
 
-		addPost((prev) => [newPost, ...prev]); //addPost is the same as setPost on HomePage (addPosts is just a prop name to send it here BUT it IS still setPosts from HomePage)
-		// "prev" is the previous array from home -- we put THIS "newPost" ON TOP of that (now) old array from HomePage using (...prev)
-		// this makes a whole new array, combining the old posts with the newest one from this file on top!
+			const token = localStorage.getItem('token');
+			let username = 'UnknownUser';
+			if (token) {
+				const payload = JSON.parse(atob(token.split('.')[1]));
+				username = payload.username;
+			}
 
-		navigate('/'); // after a new post is posted we navigate back to HomePage to see it automatically!
+			const now = new Date();
+			const createdAt = `${now.getFullYear()}-${String(
+				now.getMonth() + 1
+			).padStart(2, '0')}-${String(now.getDate()).padStart(
+				2,
+				'0'
+			)} ${String(now.getHours()).padStart(2, '0')}:${String(
+				now.getMinutes()
+			).padStart(2, '0')}`;
+
+			const newPost = {
+				postId: result.postId,
+				username,
+				title,
+				content,
+				createdAt,
+			};
+
+			addPost((prev) => [newPost, ...prev]); // add new post to top of existing posts
+			navigate('/'); // navigate back to homepage
+		} catch (error) {
+			console.error(error);
+			alert(error.response?.data?.message || error.message);
+		}
 	};
 
 	return (
