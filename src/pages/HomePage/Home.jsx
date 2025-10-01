@@ -1,20 +1,27 @@
 import { ForumWrapper } from '../../components/ForumWrapper/ForumWrapper';
 import './Home.css';
 import { PostsContext } from '../../context/PostsContext';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import axios from 'axios';
+import { errorHandler } from '../../middlewares/errorHandler';
 
 function Home() {
 	const { posts, setPosts } = useContext(PostsContext);
-	// using useState to --> re-rencder the ForumWrapper component's old posts (posts) with new posts (setPosts)
-	// this is because: we want the new post from "NewPostPage.jsx" to actually be shown on top of all the old ones AKA shows the newest post first!
-	// NewPostPage.jsx navigates to this page (HomePage) when button is clicked so navigation and setPosts happens automatically
 
-	return (
-		// This is where I wrap all the shit into one context and sends it away to NewPostPage
-		<>
-			<ForumWrapper posts={posts} addPost={setPosts} className="home" />
-		</>
-	);
+	useEffect(() => {
+		const API_URL = import.meta.env.VITE_API_URL;
+
+		axios
+			.get(`${API_URL}/posts`)
+			.then((res) => setPosts(res.data || []))
+			.catch((err) => {
+				const response = errorHandler(err);
+				console.error(response.body.message);
+				setPosts([]);
+			});
+	}, []);
+
+	return <ForumWrapper posts={posts} setPosts={setPosts} className="home" />;
 }
 
 export default Home;

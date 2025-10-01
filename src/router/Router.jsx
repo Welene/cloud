@@ -10,7 +10,7 @@ const Router = ({ posts, addPost }) => {
 	// posts (old) & addPosts (new) props have to PASS THROUGH router to jump down to Home (all the way from NewPostPage)!
 	const router = createBrowserRouter([
 		{ path: '/', element: <Home /> },
-		{ path: '/user/:username', element: <UserPosts /> },
+		{ path: '/user/:userId', element: <UserPosts /> },
 		{ path: '/login', element: <Login /> },
 		{ path: '/register', element: <Register /> },
 		{ path: '/newpost', element: <NewPostPage /> },

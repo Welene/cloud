@@ -5,42 +5,10 @@ import NewPostBtn from './components/NewPostButton/NewPostBtn';
 
 function App() {
 	// This state now lives in App so both Home and NewPostPage can access it
-	const [posts, setPosts] = useState([
-		// initial mockup posts
-		{
-			username: 'Sjagge1239',
-			title: 'Hallo hallo',
-			content: 'This is my first post!',
-		},
-		{
-			username: '-Bobben-',
-			title: 'I am testing this',
-			content: 'Loving it so far woo',
-		},
-		{
-			username: 'Sjagge1239',
-			title: 'Hallo hallo',
-			content: 'This is my first post!',
-		},
-		{
-			username: '-Bobben-',
-			title: 'I am testing this',
-			content: 'Loving it so far woo',
-		},
-		{
-			username: 'Sjagge1239',
-			title: 'Hallo hallo',
-			content: 'This is my first post!',
-		},
-		{
-			username: '-Bobben-',
-			title: 'I am testing this',
-			content: 'LAST POST',
-		},
-	]);
+	const [posts, setPosts] = useState([]);
 
 	return (
-		<PostsContext.Provider value={{ posts, addPost: setPosts }}>
+		<PostsContext.Provider value={{ posts, setPosts }}>
 			<div className="app">
 				<header className="app-header">
 					<h1 className="app-header__title">QuickPost</h1>

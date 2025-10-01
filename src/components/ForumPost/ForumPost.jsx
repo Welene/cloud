@@ -3,12 +3,12 @@ import './ForumPost.css';
 import { useNavigate } from 'react-router-dom';
 
 // THIS COMPONENT SHOWS ONLY ONE POST (with the post's title, text/content & username)
-export const ForumPost = ({ username, title, content }) => {
+export const ForumPost = ({ userId, username, title, content }) => {
 	const navigate = useNavigate();
 
 	const handleUsernameClick = () => {
 		// when onClick is done -- starts the handleUsernameClick function that navigates you to the user's posts (another page)
-		navigate(`/user/${username}`);
+		navigate(`/user/${userId}`);
 	};
 
 	return (

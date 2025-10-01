@@ -12,6 +12,7 @@ export const ForumWrapper = ({ posts, className }) => {
 				<ForumPost
 					key={index}
 					username={post.username}
+					userId={post.userId}
 					title={post.title}
 					content={post.content}
 				/>
