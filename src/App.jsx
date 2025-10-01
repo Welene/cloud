@@ -4,7 +4,6 @@ import { PostsContext } from './context/PostsContext';
 import NewPostBtn from './components/NewPostButton/NewPostBtn';
 
 function App() {
-	// This state now lives in App so both Home and NewPostPage can access it
 	const [posts, setPosts] = useState([]);
 
 	return (

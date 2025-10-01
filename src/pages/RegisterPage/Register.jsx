@@ -20,8 +20,8 @@ function Register() {
 			const result = await registerUser(username, password);
 			console.log(result); // backend answer
 			navigate('/login'); // <-- if the registering succeeds
-		} catch (err) {
-			const response = errorHandler(err);
+		} catch (error) {
+			const response = errorHandler(error);
 			console.error(response); // logging out backend answer
 		}
 	};

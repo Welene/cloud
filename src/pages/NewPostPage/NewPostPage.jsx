@@ -8,7 +8,7 @@ import { createNewPost } from '../../functions/newPost';
 
 function NewPostPage() {
 	const navigate = useNavigate();
-	const { setPost } = useContext(PostsContext); // this is where context has sent the WHOLE setPosts package to this page!
+	const { setPosts } = useContext(PostsContext); // this is where context has sent the WHOLE setPosts package to this page!
 
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
@@ -49,7 +49,7 @@ function NewPostPage() {
 				createdAt,
 			};
 
-			setPost((prev) => [newPost, ...prev]); // add new post to top of existing posts
+			setPosts((prev) => [newPost, ...prev]); // add new post to top of existing posts
 			navigate('/'); // navigate back to homepage
 		} catch (error) {
 			console.error(error);

@@ -16,11 +16,12 @@ function UserPosts() {
 		axios
 			.get(`${API_URL}/posts/${userId}`)
 			.then((res) => {
-				const data = JSON.parse(res.data.body);
+				// axios already gives you JSON
+				const data = res.data;
 				setPosts(data.posts || []);
 			})
-			.catch((err) => {
-				console.error('Failed to load posts:', err);
+			.catch((error) => {
+				console.error('Cannot get posts', error);
 			});
 	}, [userId]);
 
