@@ -12,13 +12,11 @@ function UserPosts() {
 
 	useEffect(() => {
 		if (!userId) return;
-
 		axios
 			.get(`${API_URL}/posts/${userId}`)
 			.then((res) => {
-				// axios already gives you JSON
-				const data = res.data;
-				setPosts(data.posts || []);
+				console.log('Response:', res.data);
+				setPosts(res.data.posts || []);
 			})
 			.catch((error) => {
 				console.error('Cannot get posts', error);

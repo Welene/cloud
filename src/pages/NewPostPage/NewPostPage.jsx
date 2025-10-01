@@ -28,6 +28,7 @@ function NewPostPage() {
 			if (token) {
 				const payload = JSON.parse(atob(token.split('.')[1]));
 				username = payload.username;
+				userId = payload.userId; // sjekkk den her
 			}
 
 			const now = new Date();
