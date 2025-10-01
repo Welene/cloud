@@ -2,30 +2,27 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BigButton from '../../components/BigButton';
 import './Register.css';
-import { registerUser } from '../../functions/registerUser';
 import { errorHandler } from '../../middlewares/errorHandler';
+import { registerUser } from '../../functions/registerUser';
 
 function Register() {
 	const navigate = useNavigate();
+
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 
 	const handleRegister = async () => {
 		if (!username || !password || !confirmPassword) return;
-		if (password !== confirmPassword) {
-			alert('Passwords do not match');
-			return;
-		}
+		if (password !== confirmPassword) return;
 
 		try {
 			const result = await registerUser(username, password);
-			console.log(result);
-			navigate('/login');
+			console.log(result); // backend answer
+			navigate('/login'); // <-- if the registering succeeds
 		} catch (err) {
 			const response = errorHandler(err);
-			console.error(response.body.message);
-			alert(response.body.message);
+			console.error(response); // logging out backend answer
 		}
 	};
 
@@ -60,7 +57,7 @@ function Register() {
 
 				<label
 					className="register-section__label--pass2"
-					htmlFor="confirmPassword">
+					htmlFor="password">
 					Confirm password:
 				</label>
 				<input

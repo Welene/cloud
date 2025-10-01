@@ -6,7 +6,7 @@ import Login from '../pages/LoginPage/Login';
 import Register from '../pages/RegisterPage/Register';
 // import Logout from '../pages/LogoutPage/Logout;'
 
-const Router = ({ posts, addPost }) => {
+const Router = ({ posts, setPost }) => {
 	// posts (old) & addPosts (new) props have to PASS THROUGH router to jump down to Home (all the way from NewPostPage)!
 	const router = createBrowserRouter([
 		{ path: '/', element: <Home /> },

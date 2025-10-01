@@ -8,7 +8,7 @@ import { createNewPost } from '../../functions/newPost';
 
 function NewPostPage() {
 	const navigate = useNavigate();
-	const { setPosts } = useContext(PostsContext); // this is where context has sent the WHOLE setPosts package to this page!
+	const { setPost } = useContext(PostsContext); // this is where context has sent the WHOLE setPosts package to this page!
 
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
@@ -24,11 +24,10 @@ function NewPostPage() {
 
 			const token = localStorage.getItem('token');
 			let username = 'UnknownUser';
-			let userId = null;
+			let userId = 'userId';
 			if (token) {
 				const payload = JSON.parse(atob(token.split('.')[1]));
 				username = payload.username;
-				userId = payload.userId; //payload is what the token has
 			}
 
 			const now = new Date();
@@ -44,13 +43,13 @@ function NewPostPage() {
 			const newPost = {
 				postId: result.postId,
 				username,
-				userId, // takes in userId from the token that you're logged in with so that the posts are connected to the userId
+				userId,
 				title,
 				content,
 				createdAt,
 			};
 
-			setPosts((prev) => [newPost, ...prev]); // add new post to top of existing posts
+			setPost((prev) => [newPost, ...prev]); // add new post to top of existing posts
 			navigate('/'); // navigate back to homepage
 		} catch (error) {
 			console.error(error);

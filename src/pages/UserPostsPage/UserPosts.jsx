@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { ForumWrapper } from '../../components/ForumWrapper/ForumWrapper';
 import axios from 'axios';
 import './UserPosts.css';
-import { errorHandler } from '../../middlewares/errorHandler';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -16,11 +15,12 @@ function UserPosts() {
 
 		axios
 			.get(`${API_URL}/posts/${userId}`)
-			.then((res) => setPosts(res.data || []))
+			.then((res) => {
+				const data = JSON.parse(res.data.body);
+				setPosts(data.posts || []);
+			})
 			.catch((err) => {
-				const response = errorHandler(err);
-				console.error(response.body.message);
-				setPosts([]);
+				console.error('Failed to load posts:', err);
 			});
 	}, [userId]);
 
