@@ -20,7 +20,6 @@ function App() {
 				<footer className="app-footer">
 					<p className="app-footer__text">© 2025 Helene Theodorsen</p>
 				</footer>
-				<NewPostBtn />
 			</div>
 		</PostsContext.Provider>
 	);

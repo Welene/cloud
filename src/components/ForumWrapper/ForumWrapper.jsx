@@ -1,6 +1,7 @@
 import React from 'react';
 import { ForumPost } from '../ForumPost/ForumPost';
 import './ForumWrapper.css';
+import NewPostBtn from '../NewPostButton/NewPostBtn';
 
 export const ForumWrapper = ({ posts, className }) => {
 	return (
@@ -15,6 +16,7 @@ export const ForumWrapper = ({ posts, className }) => {
 					content={post.content}
 				/>
 			))}
+			<NewPostBtn />
 		</section>
 	);
 };
