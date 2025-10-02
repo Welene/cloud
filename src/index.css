@@ -56,3 +56,16 @@ main {
 	font-style: italic;
 	font-size: 0.8rem;
 }
+
+.forum-wrapper {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+.post {
+	position: relative;
+	max-width: 100%;
+}

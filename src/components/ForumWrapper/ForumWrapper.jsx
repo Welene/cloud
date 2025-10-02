@@ -1,22 +1,20 @@
 import React from 'react';
 import { ForumPost } from '../ForumPost/ForumPost';
-import './ForumWrapper.css';
-import NewPostBtn from '../NewPostButton/NewPostBtn';
 
-export const ForumWrapper = ({ posts, className }) => {
+export const ForumWrapper = ({ posts, onDelete, className }) => {
 	return (
-		<section className={`forum-wrapper ${className}`}>
-			{/* ${className} --> sender ekstra/bonus klassenavn som prop */}
-			{posts.map((post, index) => (
+		<div className={`forum-wrapper ${className}`}>
+			{posts.map((post) => (
 				<ForumPost
-					key={index}
-					username={post.username}
+					key={post.postId}
+					postId={post.postId}
 					userId={post.userId}
+					username={post.username}
 					title={post.title}
 					content={post.content}
+					onDelete={onDelete}
 				/>
 			))}
-			<NewPostBtn />
-		</section>
+		</div>
 	);
 };

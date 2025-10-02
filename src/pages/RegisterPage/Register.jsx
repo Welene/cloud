@@ -18,11 +18,11 @@ function Register() {
 
 		try {
 			const result = await registerUser(username, password);
-			console.log(result); // backend answer
-			navigate('/login'); // <-- if the registering succeeds
+			console.log(result);
+			navigate('/login');
 		} catch (error) {
 			const response = errorHandler(error);
-			console.error(response); // logging out backend answer
+			console.error(response);
 		}
 	};
 

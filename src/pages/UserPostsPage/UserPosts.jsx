@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ForumWrapper } from '../../components/ForumWrapper/ForumWrapper';
+import { deletePost } from '../../functions/deletePost';
 import axios from 'axios';
 import './UserPosts.css';
 
@@ -14,16 +15,24 @@ function UserPosts() {
 		if (!userId) return;
 		axios
 			.get(`${API_URL}/posts/${userId}`)
-			.then((res) => {
-				console.log('Response:', res.data);
-				setPosts(res.data.posts || []);
-			})
-			.catch((error) => {
-				console.error('Cannot get posts', error);
-			});
+			.then((res) => setPosts(res.data.posts || []))
+			.catch((error) => console.error('Cannot get posts', error));
 	}, [userId]);
 
-	return <ForumWrapper posts={posts} className="user" />;
+	const handleDelete = async (postId) => {
+		try {
+			await deletePost(postId);
+			setPosts((prevPosts) =>
+				prevPosts.filter((p) => p.postId !== postId)
+			);
+		} catch (err) {
+			console.error('Failed to delete post', err);
+		}
+	};
+
+	return (
+		<ForumWrapper posts={posts} onDelete={handleDelete} className="user" />
+	);
 }
 
 export default UserPosts;

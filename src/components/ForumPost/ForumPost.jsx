@@ -1,13 +1,20 @@
 import React from 'react';
 import './ForumPost.css';
 import { useNavigate } from 'react-router-dom';
+import { getCurrentUserId } from '../../functions/authHelper';
 
-// THIS COMPONENT SHOWS ONLY ONE POST (with the post's title, text/content & username)
-export const ForumPost = ({ userId, username, title, content }) => {
+export const ForumPost = ({
+	postId,
+	userId,
+	username,
+	title,
+	content,
+	onDelete,
+}) => {
 	const navigate = useNavigate();
+	const currentUserId = getCurrentUserId();
 
 	const handleUsernameClick = () => {
-		// when onClick is done -- starts the handleUsernameClick function that navigates you to the user's posts (another page)
 		navigate(`/user/${userId}`);
 	};
 
@@ -18,6 +25,15 @@ export const ForumPost = ({ userId, username, title, content }) => {
 			<p className="post__user" onClick={handleUsernameClick}>
 				{username}
 			</p>
+
+			{/* Show delete button only for the logged-in user's posts */}
+			{userId === currentUserId && (
+				<button
+					className="post__delete-btn"
+					onClick={() => onDelete(postId)}>
+					DEL
+				</button>
+			)}
 		</article>
 	);
 };
