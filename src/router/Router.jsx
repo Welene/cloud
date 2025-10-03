@@ -11,6 +11,7 @@ import NewPostPage from '../pages/NewPostPage/NewPostPage';
 import Login from '../pages/LoginPage/Login';
 import Register from '../pages/RegisterPage/Register';
 import NewPostBtn from '../components/NewPostButton/NewPostBtn';
+import EditPostPage from '../pages/EditPostPage/EditPost';
 
 const Layout = () => {
 	const navigate = useNavigate();
@@ -48,6 +49,7 @@ const Router = () => {
 				{ path: '/login', element: <Login /> },
 				{ path: '/register', element: <Register /> },
 				{ path: '/newpost', element: <NewPostPage /> },
+				{ path: '/edit/:postId', element: <EditPostPage /> },
 			],
 		},
 	]);

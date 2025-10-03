@@ -28,11 +28,18 @@ export const ForumPost = ({
 
 			{/* Show delete button only for the logged-in user's posts */}
 			{userId === currentUserId && (
-				<button
-					className="post__delete-btn"
-					onClick={() => onDelete(postId)}>
-					DEL
-				</button>
+				<>
+					<button
+						className="post__delete-btn"
+						onClick={() => onDelete(postId)}>
+						DEL
+					</button>
+					<button
+						className="post__edit-btn"
+						onClick={() => navigate(`/edit/${postId}`)}>
+						Edit
+					</button>
+				</>
 			)}
 		</article>
 	);
