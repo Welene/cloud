@@ -1,4 +1,4 @@
-# Individuell examination - Shui
+# Individuell examination - Quickpost (Helene)
 
 ##Backend repo:
 https://github.com/Welene/cloud-backend
