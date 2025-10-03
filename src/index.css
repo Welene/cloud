@@ -1,10 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap');
+
+/* misc */
 :root {
 	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
-	color-scheme: light dark;
 	color: #fff;
-	/* background-color: #242424; */
+}
+
+/* for variables */
+:root {
+	--primary-background-home: linear-gradient(135deg, #5d4763, #a375c4);
+	--secondary-background-user: linear-gradient(135deg, #3e4f75, #6b84b8);
+	--primary-grey: rgb(68, 68, 68);
+	--txt-color: #f0f0f0;
+	--primary-white: #f0f0f0;
+	--primary--post-clr: rgba(143, 143, 143, 0.5);
 }
 
 body {
@@ -29,32 +40,38 @@ main {
 }
 
 .app-header {
-	background-color: rgb(68, 68, 68);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 0.8rem;
 	min-height: 4.5rem;
+	background-color: var(--primary-grey);
 }
 
 .app-header__title {
-	font-size: 3em;
+	font-size: 4em;
 	line-height: 1.2;
 	margin: 0;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-		'Lucida Sans', Arial, sans-serif;
+	font-family: 'Londrina Shadow', sans-serif;
 	letter-spacing: 0.3rem;
-	font-weight: bolder;
+	background: linear-gradient(
+		45deg,
+		rgb(163, 76, 180),
+		rgb(140, 89, 199),
+		rgb(55, 118, 163)
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .app-footer {
 	min-height: 3.5rem;
-	background-color: rgb(68, 68, 68);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-style: italic;
 	font-size: 0.8rem;
+	background-color: var(--primary-grey);
 }
 
 .forum-wrapper {
@@ -63,6 +80,8 @@ main {
 	flex: 1;
 	min-height: 0;
 	overflow-y: auto;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 
 .post {

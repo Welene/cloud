@@ -1,14 +1,13 @@
 .post-section {
-	background-color: rgb(160, 160, 160);
+	background: var(--primary-background-home);
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center; */
 	align-items: center;
 	height: 100vh;
 }
 
 .post-section__content {
-	background-color: rgb(104, 104, 104);
+	background-color: var(--primary--post-clr);
 	min-width: 22rem;
 	min-height: 33rem;
 	margin: 1.8rem 0rem 1.8rem 0rem;
@@ -17,6 +16,7 @@
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+	box-shadow: 0px 5px 6px 0px rgba(10, 10, 10, 0.3);
 }
 
 .post-section__title {
@@ -24,25 +24,27 @@
 }
 
 .post-section__input {
-	background-color: rgb(240, 240, 240);
+	background-color: var(--primary-white);
 	border-style: none;
 	font-size: 1.2rem;
 	margin-bottom: 3rem;
 	padding: 0.5rem 0.8rem;
 	width: 19rem;
 	border-radius: 0.3rem;
-	color: rgb(7, 7, 7);
+	color: rgb(48, 48, 48);
+	font-style: italic;
 }
 
 .post-section__txt-area {
-	background-color: rgb(240, 240, 240);
+	background-color: var(--primary-white);
 	border-style: none;
 	font-size: 1rem;
 	margin-bottom: 2rem;
 	padding: 1rem 0.7rem;
 	width: 19rem;
 	border-radius: 0.3rem;
-	color: rgb(7, 7, 7);
+	color: rgb(48, 48, 48);
+	font-style: italic;
 	text-align: center;
 	min-height: 13rem;
 }

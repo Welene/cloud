@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: rgb(172, 172, 172);
+	background: var(--secondary-background-user);
 	height: 100vh;
 }
 
@@ -12,12 +12,13 @@
 	min-height: 25rem;
 	margin: 1.8rem 0rem 1.8rem 0rem;
 	border-radius: 0.3rem;
-	background-color: rgba(124, 124, 124, 0.6);
+	background-color: var(--primary--post-clr);
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center; */
 	align-items: center;
 	position: relative;
+	box-shadow: 0px 5px 6px 0px rgba(10, 10, 10, 0.3);
+	margin-top: -5rem;
 }
 
 .login-section__title {
@@ -32,7 +33,8 @@
 	padding: 0.5rem 0.8rem;
 	width: 19rem;
 	border-radius: 0.3rem;
-	color: rgb(7, 7, 7);
+	color: rgb(48, 48, 48);
+	font-style: italic;
 }
 
 .login-section__label--name {

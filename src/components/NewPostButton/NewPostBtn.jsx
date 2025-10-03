@@ -18,6 +18,9 @@ function NewPostBtn() {
 	return (
 		<button className="add-post" onClick={handleClick}>
 			<figure className="add-post__icon">+</figure>
+			<figure className="you-know-what">
+				I can't be bothered with this button right now :-)
+			</figure>
 		</button>
 	);
 }

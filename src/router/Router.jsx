@@ -31,7 +31,7 @@ const Layout = () => {
 				<Outlet /> {/* content of the page here */}
 			</main>
 			<footer className="app-footer">
-				<p className="app-footer__text">© 2025 Helene Theodorsen</p>
+				<p className="app-footer__text">© 2025 Quickpost</p>
 			</footer>
 			<NewPostBtn />
 		</div>

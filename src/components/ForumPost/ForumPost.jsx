@@ -32,12 +32,12 @@ export const ForumPost = ({
 					<button
 						className="post__delete-btn"
 						onClick={() => onDelete(postId)}>
-						DEL
+						🗙
 					</button>
 					<button
 						className="post__edit-btn"
 						onClick={() => navigate(`/edit/${postId}`)}>
-						Edit
+						✎
 					</button>
 				</>
 			)}

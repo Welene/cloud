@@ -4,12 +4,14 @@ import { ForumWrapper } from '../../components/ForumWrapper/ForumWrapper';
 import { deletePost } from '../../functions/deletePost';
 import axios from 'axios';
 import './UserPosts.css';
+import PostSorter from '../../components/PostOrder/PostOrder';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function UserPosts() {
 	const { userId } = useParams();
 	const [posts, setPosts] = useState([]);
+	const [sortOrder, setSortOrder] = useState('descending');
 
 	useEffect(() => {
 		if (!userId) return;
@@ -25,13 +27,31 @@ function UserPosts() {
 			setPosts((prevPosts) =>
 				prevPosts.filter((p) => p.postId !== postId)
 			);
-		} catch (err) {
-			console.error('Failed to delete post', err);
+		} catch (error) {
+			console.error('Failed to delete post', error);
 		}
 	};
 
+	const sortedPosts = [...posts].sort((a, b) => {
+		const dateA = new Date(a.createdAt);
+		const dateB = new Date(b.createdAt);
+
+		if (sortOrder === 'ascending') {
+			return dateA - dateB; // oldest first
+		} else {
+			return dateB - dateA; // newest first
+		}
+	});
+
 	return (
-		<ForumWrapper posts={posts} onDelete={handleDelete} className="user" />
+		<>
+			<PostSorter posts={sortOrder} setSortOrder={setSortOrder} />
+			<ForumWrapper
+				posts={sortedPosts}
+				onDelete={handleDelete}
+				className="user"
+			/>
+		</>
 	);
 }
 

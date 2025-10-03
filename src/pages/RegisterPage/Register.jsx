@@ -68,7 +68,7 @@ function Register() {
 				/>
 			</article>
 
-			<BigButton text="Register" onClick={handleRegister} />
+			<BigButton text="CREATE" onClick={handleRegister} />
 		</section>
 	);
 }

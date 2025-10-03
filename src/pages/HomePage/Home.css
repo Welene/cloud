@@ -1,5 +1,5 @@
 /* farge bare for wrapperen på homepage */
 
 .forum-wrapper.home {
-	background-color: rgb(238, 142, 158);
+	background: var(--primary-background-home);
 }

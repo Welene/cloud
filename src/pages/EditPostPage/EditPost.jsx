@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BigButton from '../../components/BigButton';
 import { PostsContext } from '../../context/PostsContext';
 import { editPost } from '../../functions/editPost';
-// import './EditPost.css';
 
 function EditPostPage() {
 	const navigate = useNavigate();
