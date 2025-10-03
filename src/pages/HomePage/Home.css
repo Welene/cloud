@@ -1,5 +1,3 @@
-/* farge bare for wrapperen på homepage */
-
 .forum-wrapper.home {
 	background: var(--primary-background-home);
 }

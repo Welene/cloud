@@ -8,7 +8,7 @@ export async function createNewPost(title, content) {
 
 	const response = await axios.post(
 		`${API_URL}/posts`,
-		{ title, content }, // body of the request
+		{ title, content },
 		{ headers: { Authorization: `Bearer ${token}` } } // send token for to backend so backend knows who is posting it (token already has username and userId in it)
 	);
 

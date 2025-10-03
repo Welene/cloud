@@ -30,7 +30,7 @@ function Home() {
 				} catch (err) {
 					console.error('Failed to delete post', err);
 				}
-			}, 300); // match CSS animation duration
+			}, 300);
 		}
 	};
 

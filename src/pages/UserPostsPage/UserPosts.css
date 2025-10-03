@@ -1,5 +1,3 @@
-/* farge bare for wrapperen på userposts page */
-
 .forum-wrapper.user {
 	background: var(--secondary-background-user);
 }

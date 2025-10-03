@@ -1,21 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BigButton from '../../components/BigButton';
 import { PostsContext } from '../../context/PostsContext';
 import './NewPostPage.css';
-import { useState } from 'react';
 import { createNewPost } from '../../functions/newPost';
+import { errorHandler } from '../../middlewares/errorHandler';
 
 function NewPostPage() {
 	const navigate = useNavigate();
-	const { setPosts } = useContext(PostsContext); // this is where context has sent the WHOLE setPosts package to this page!
+	const { setPosts } = useContext(PostsContext);
 
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
+	const [error, setError] = useState('');
 
 	const handlePost = async () => {
+		setError('');
+
 		if (!title || !content) {
-			alert('All the fields needs to me filled out!');
+			setError('All fields must be filled out!');
 			return;
 		}
 
@@ -28,7 +31,7 @@ function NewPostPage() {
 			if (token) {
 				const payload = JSON.parse(atob(token.split('.')[1]));
 				username = payload.username;
-				userId = payload.userId; // sjekkk den her
+				userId = payload.userId;
 			}
 
 			const now = new Date();
@@ -50,11 +53,11 @@ function NewPostPage() {
 				createdAt,
 			};
 
-			setPosts((prev) => [newPost, ...prev]); // add new post to top of existing posts
-			navigate('/'); // navigate back to homepage
-		} catch (error) {
-			console.error(error);
-			alert(error.response?.data?.message || error.message);
+			setPosts((prev) => [newPost, ...prev]);
+			navigate('/');
+		} catch (err) {
+			const response = errorHandler(err);
+			setError(response.body.message);
 		}
 	};
 
@@ -84,10 +87,14 @@ function NewPostPage() {
 					onChange={(e) => setContent(e.target.value)}
 					placeholder="Share something with the world!"
 				/>
+				{error && (
+					<p className="post-error" style={{ color: 'red' }}>
+						{error}
+					</p>
+				)}
 			</article>
 
 			<BigButton text="POST" onClick={handlePost} />
-			{/* clicking button activates the handlePost function up there ^ */}
 		</section>
 	);
 }

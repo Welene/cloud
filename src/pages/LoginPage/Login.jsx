@@ -3,24 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import BigButton from '../../components/BigButton';
 import './Login.css';
 import { loginUser } from '../../functions/loginUser';
+import { errorHandler } from '../../middlewares/errorHandler';
 
 function Login() {
 	const navigate = useNavigate();
 
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [error, setError] = useState(''); // visible error msg
 
 	const handleLoginClick = async () => {
+		setError('');
+
 		if (!username || !password) return;
 
 		try {
-			const result = await loginUser(username, password); // waiting on loginUser function, on the body of the POST call
-			localStorage.setItem('token', result.token); // stores token for later API calls, like for example: NewPost
+			const result = await loginUser(username, password);
+			localStorage.setItem('token', result.token);
 			console.log('Logged in:', result);
-			navigate('/'); // goes to homepage
+			navigate('/home');
 		} catch (error) {
-			console.error(error.response?.data || error.message);
-			alert(error.response?.data?.message || 'Login failed'); // bytt ut alerts med noe bedre senere, få det bare å funke først grovt sett...
+			const response = errorHandler(error);
+			setError(response.body.message);
 		}
 	};
 
@@ -52,6 +56,11 @@ function Login() {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
+				{error && (
+					<p className="login-error" style={{ color: 'red' }}>
+						{error}
+					</p>
+				)}
 			</article>
 
 			<BigButton text="LOG IN" onClick={handleLoginClick} />
