@@ -22,30 +22,29 @@ function UserPosts() {
 	}, [userId]);
 
 	const handleDelete = async (postId) => {
-		try {
-			await deletePost(postId);
-			setPosts((prevPosts) =>
-				prevPosts.filter((p) => p.postId !== postId)
-			);
-		} catch (error) {
-			console.error('Failed to delete post', error);
+		const postElement = document.getElementById(`post-${postId}`);
+		if (postElement) {
+			postElement.classList.add('post--deleting');
+			setTimeout(async () => {
+				try {
+					await deletePost(postId);
+					setPosts((prev) => prev.filter((p) => p.postId !== postId));
+				} catch (error) {
+					console.error('Failed to delete post', error);
+				}
+			}, 300);
 		}
 	};
 
 	const sortedPosts = [...posts].sort((a, b) => {
 		const dateA = new Date(a.createdAt);
 		const dateB = new Date(b.createdAt);
-
-		if (sortOrder === 'ascending') {
-			return dateA - dateB; // oldest first
-		} else {
-			return dateB - dateA; // newest first
-		}
+		return sortOrder === 'ascending' ? dateA - dateB : dateB - dateA;
 	});
 
 	return (
 		<>
-			<PostSorter posts={sortOrder} setSortOrder={setSortOrder} />
+			<PostSorter sortOrder={sortOrder} setSortOrder={setSortOrder} />
 			<ForumWrapper
 				posts={sortedPosts}
 				onDelete={handleDelete}

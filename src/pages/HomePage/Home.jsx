@@ -19,13 +19,18 @@ function Home() {
 	}, []);
 
 	const handleDelete = async (postId) => {
-		try {
-			await deletePost(postId);
-			setPosts((prevPosts) =>
-				prevPosts.filter((p) => p.postId !== postId)
-			);
-		} catch (err) {
-			console.error('Failed to delete post', err);
+		const postElement = document.getElementById(`post-${postId}`);
+		if (postElement) {
+			postElement.classList.add('post--deleting');
+
+			setTimeout(async () => {
+				try {
+					await deletePost(postId);
+					setPosts((prev) => prev.filter((p) => p.postId !== postId));
+				} catch (err) {
+					console.error('Failed to delete post', err);
+				}
+			}, 300); // match CSS animation duration
 		}
 	};
 
@@ -34,15 +39,15 @@ function Home() {
 		const dateB = new Date(b.createdAt);
 
 		if (sortOrder === 'ascending') {
-			return dateA - dateB; // oldest first
+			return dateA - dateB;
 		} else {
-			return dateB - dateA; // newest first
+			return dateB - dateA;
 		}
 	});
 
 	return (
 		<>
-			<PostSorter posts={sortOrder} setSortOrder={setSortOrder} />
+			<PostSorter sortOrder={sortOrder} setSortOrder={setSortOrder} />
 			<ForumWrapper
 				posts={sortedPosts}
 				onDelete={handleDelete}

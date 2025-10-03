@@ -31,11 +31,16 @@
 	line-height: 1;
 	padding: 0.2rem;
 	color: var(--txt-color);
+	transition: transform 0.15s ease-in-out;
 }
 
 .post__delete-btn:focus {
 	outline: 2px solid rgba(255, 255, 255, 0.15);
 	border-radius: 4px;
+}
+
+.post__delete-btn:active {
+	transform: scale(1.05);
 }
 
 .post__edit-btn {
@@ -48,9 +53,25 @@
 	line-height: 1;
 	padding: 0.2rem;
 	color: var(--txt-color);
+	transition: transform 0.15s ease-in-out;
 }
 
 .post__edit-btn:focus {
 	outline: 2px solid rgba(255, 255, 255, 0.15);
 	border-radius: 4px;
+}
+
+.post__edit-btn:focus {
+	transform: scale(1.05);
+}
+
+.post {
+	transition: transform 0.3s ease, opacity 0.9s ease;
+}
+
+.post--deleting {
+	transform: scale(0.8);
+	opacity: 0;
+	filter: blur(2px);
+	transition: all 0.3s ease-out;
 }

@@ -19,7 +19,7 @@ export const ForumPost = ({
 	};
 
 	return (
-		<article className="post">
+		<article className="post" id={`post-${postId}`}>
 			<h3 className="post__title">{title}</h3>
 			<p className="post__txt">{content}</p>
 			<p className="post__user" onClick={handleUsernameClick}>

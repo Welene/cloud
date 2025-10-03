@@ -11,8 +11,11 @@ function Register() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+	const [error, setError] = useState(''); // the visible error msg on the page
 
 	const handleRegister = async () => {
+		setError('');
+
 		if (!username || !password || !confirmPassword) return;
 		if (password !== confirmPassword) return;
 
@@ -22,7 +25,7 @@ function Register() {
 			navigate('/login');
 		} catch (error) {
 			const response = errorHandler(error);
-			console.error(response);
+			setError(response.body.message);
 		}
 	};
 
@@ -66,6 +69,11 @@ function Register() {
 					value={confirmPassword}
 					onChange={(e) => setConfirmPassword(e.target.value)}
 				/>
+				{error && (
+					<p className="register-error" style={{ color: 'red' }}>
+						{error}
+					</p>
+				)}
 			</article>
 
 			<BigButton text="CREATE" onClick={handleRegister} />

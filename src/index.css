@@ -12,7 +12,7 @@
 :root {
 	--primary-background-home: linear-gradient(135deg, #5d4763, #a375c4);
 	--secondary-background-user: linear-gradient(135deg, #3e4f75, #6b84b8);
-	--primary-grey: rgb(68, 68, 68);
+	--primary-grey: rgb(56, 56, 56);
 	--txt-color: #f0f0f0;
 	--primary-white: #f0f0f0;
 	--primary--post-clr: rgba(143, 143, 143, 0.5);
